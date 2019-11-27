@@ -69,7 +69,7 @@ public class QuanLyHomeFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void xemtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemtkActionPerformed
-       NhapThoiGian ntg = new NhapThoiGian();
+       NhapThoiGianRFM ntg = new NhapThoiGianRFM();
        ntg.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_xemtkActionPerformed

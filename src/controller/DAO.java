@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class DAO {
 
     public Connection con;
-    private String url = "jdbc:mysql://192.168.10.10/btl";
+    private String url = "jdbc:mysql://192.168.10.10/btl?useUnicode=true&characterEncoding=utf-8";
     private String user = "homestead";
     private String password = "secret";
    private static final DAO instance = new DAO();
@@ -43,7 +43,4 @@ public class DAO {
 
         return con;
     }
-
-
-
 }

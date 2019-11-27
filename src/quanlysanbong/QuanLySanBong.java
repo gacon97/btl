@@ -8,7 +8,7 @@ package quanlysanbong;
 import controller.DAO;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import view.Login;
+import view.LoginFRM;
 
 /**
  *
@@ -20,7 +20,7 @@ public class QuanLySanBong {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Login login = new Login();
+        LoginFRM login = new LoginFRM();
         login.setVisible(true);
     }
 
