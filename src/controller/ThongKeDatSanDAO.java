@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.DanhSachDatSan;
+import model.PhieuDatSan;
 import model.KhachHang;
 import model.KhungGio;
 import model.SanBong;
@@ -21,10 +21,10 @@ import model.ThongKeKhungGio;
  *
  * @author Anh Le
  */
-public class DanhSachDatSanDAO {
-    public int seachKhungGio(String NgayBatDau, String NgayKetThuc) {
+public class ThongKeDatSanDAO {
+    public int seachKhungGio(String GioBatDau, String GioKetThuc) {
         int id = 0;
-        String query = "select * from tblKhungGio where GioBatDau = '" + NgayBatDau + "' and GioKetThuc = '" + NgayKetThuc + "'";
+        String query = "select * from tblKhungGio where GioBatDau = '" + GioBatDau + "' and GioKetThuc = '" + GioKetThuc + "'";
         Statement stmt;
         try {
             stmt = DAO.getInstance().con.createStatement();
@@ -38,10 +38,16 @@ public class DanhSachDatSanDAO {
         }
         return id;
     }
-    public ArrayList<DanhSachDatSan> getDanhSach(int idKhungGio, String ngayBD, String ngayKT) {
-        ArrayList<DanhSachDatSan> dsDatSan = new ArrayList<>();
-//        String query = "select * from tblKhungGio where GioBatDau = '" + NgayBatDau + "' and GioKetThuc = '" + NgayKetThuc + "'";
-        String query = "SELECT tblPhieuDatSan.*, tblKhachHang.SoCMT,tblNguoi.HoTen, tblSanBong.Ten, tblSanBong.GiaTien,tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc from tblPhieuDatSan INNER JOIN tblKhungGio ON tblPhieuDatSan.KhungGio_ID = tblKhungGio.id INNER JOIN tblKhachHang ON tblPhieuDatSan.KhachHang_ID = tblKhachHang.id INNER JOIN tblNguoi ON tblNguoi.id = tblKhachHang.Nguoi_ID INNER JOIN tblSanBong on tblSanBong.id = tblPhieuDatSan.SanBong_ID where tblPhieuDatSan.NgayBatDau >= '" + ngayBD + "' and tblPhieuDatSan.NgayKetThuc <= '" + ngayKT + "' AND tblKhungGio.id = " + idKhungGio + "";
+    public ArrayList<PhieuDatSan> getDanhSach(int idKhungGio, String ngayBD, String ngayKT) {
+        ArrayList<PhieuDatSan> dsDatSan = new ArrayList<>();
+        String query = "SELECT tblPhieuDatSan.*, tblKhachHang.SoCMT,tblNguoi.HoTen, tblSanBong.Ten, tblSanBong.GiaTien,tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc "
+                + "from tblPhieuDatSan INNER JOIN tblKhungGio ON tblPhieuDatSan.KhungGio_ID = tblKhungGio.id "
+                + "INNER JOIN tblKhachHang ON tblPhieuDatSan.KhachHang_ID = tblKhachHang.id "
+                + "INNER JOIN tblNguoi ON tblNguoi.id = tblKhachHang.Nguoi_ID "
+                + "INNER JOIN tblSanBong on tblSanBong.id = tblPhieuDatSan.SanBong_ID "
+                + "INNER JOIN tblHoaDon ON tblHoaDon.PhieuDatSan_ID = tblPhieuDatSan.id "
+                + "INNER JOIN tblPhieuCheckout ON tblPhieuDatSan.id = tblPhieuCheckout.PhieuDatSan_ID "
+                + "where tblPhieuDatSan.NgayBatDau >= '" + ngayBD + "' and tblPhieuDatSan.NgayKetThuc <= '" + ngayKT + "' AND tblKhungGio.id = " + idKhungGio + "";
         System.out.println(query);
         Statement stmt;
         try {
@@ -49,11 +55,10 @@ public class DanhSachDatSanDAO {
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
-                System.out.println(rs.getInt("id") + " ");
                 SanBong sanBong = new SanBong(rs.getString("Ten"), rs.getInt("GiaTien"));
                 KhachHang khachHang = new KhachHang(rs.getString("SoCMT"), rs.getString("HoTen"));
                 KhungGio khungGio = new KhungGio(rs.getTime("GioBatDau"), rs.getTime("GioKetThuc"));
-                DanhSachDatSan danhSachDatSan = new DanhSachDatSan(rs.getInt("id"), khungGio, khachHang, sanBong, rs.getDate("NgayBatDau"), rs.getDate("NgayKetThuc"), rs.getInt("TongTien"));
+                PhieuDatSan danhSachDatSan = new PhieuDatSan(rs.getInt("id"), khungGio, khachHang, sanBong, rs.getDate("NgayBatDau"), rs.getDate("NgayKetThuc"));
                 dsDatSan.add(danhSachDatSan);
             }
         } catch (SQLException ex) {

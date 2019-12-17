@@ -18,11 +18,17 @@ import model.ThongKeKhungGio;
  *
  * @author Anh Le
  */
-public class NhapThoiGianDAO {
+public class ThongKeKhungGioDAO {
 
     public ArrayList<ThongKeKhungGio> nhapKhungGio(String NgayBatDau, String NgayKetThuc) {
         ArrayList<ThongKeKhungGio> tkKhungGio = new ArrayList<>();
-        String query = "SELECT tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc,COUNT(tblPhieuDatSan.id) AS tong_luot, SUM(tblPhieuDatSan.TongTien) AS tong_tien from tblPhieuDatSan INNER JOIN tblKhungGio ON tblPhieuDatSan.KhungGio_ID = tblKhungGio.id where tblPhieuDatSan.NgayBatDau >= '" + NgayBatDau + "' and tblPhieuDatSan.NgayKetThuc <= '" + NgayKetThuc + "' GROUP BY tblPhieuDatSan.KhungGio_ID ORDER BY tong_luot desc";
+        String query = "SELECT tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc,COUNT(tblPhieuDatSan.id) AS tong_luot, "
+                        + "SUM(tblPhieuDatSan.TongTien) AS tong_tien from tblPhieuDatSan \n" +
+                        "INNER JOIN tblKhungGio ON tblPhieuDatSan.KhungGio_ID = tblKhungGio.id \n" +
+                        "INNER JOIN tblHoaDon ON tblHoaDon.PhieuDatSan_ID = tblPhieuDatSan.id\n" +
+                        "INNER JOIN tblPhieuCheckout ON tblPhieuDatSan.id = tblPhieuCheckout.PhieuDatSan_ID "+
+                        "where tblPhieuDatSan.NgayBatDau >= '" + NgayBatDau + "' and tblPhieuDatSan.NgayKetThuc <= '" + NgayKetThuc + "' \n" +
+                        "GROUP BY tblPhieuDatSan.KhungGio_ID ORDER BY tong_luot desc,tong_tien desc;";
         Statement stmt;
         try {
             stmt = DAO.getInstance().con.createStatement();

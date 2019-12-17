@@ -6,12 +6,13 @@
 package model;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author Anh Le
  */
-public class DanhSachDatSan {
+public class PhieuDatSan {
 
     public int id;
     public KhungGio khungGio;
@@ -21,20 +22,18 @@ public class DanhSachDatSan {
     public Date ngayKetThuc;
     public int tongTien;
 
-    public DanhSachDatSan(int id, KhungGio khungGio, KhachHang khachHang, SanBong sanBong, Date ngayBatDau, Date ngayKetThuc, int tongTien) {
+    public PhieuDatSan(int id, KhungGio khungGio, KhachHang khachHang, SanBong sanBong, Date ngayBatDau, Date ngayKetThuc) {
         this.id = id;
         this.khungGio = khungGio;
         this.khachHang = khachHang;
         this.sanBong = sanBong;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
-        this.tongTien = tongTien;
     }
 
     public int getTongTien() {
         return tongTien;
     }
-
 
     public Date getNgayBatDau() {
         return ngayBatDau;
@@ -74,6 +73,17 @@ public class DanhSachDatSan {
 
     public void setSanBong(SanBong sanBong) {
         this.sanBong = sanBong;
+    }
+
+    public long tongTien() {
+        long diffInMillies = Math.abs(this.ngayKetThuc.getTime() - this.ngayBatDau.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return diff * this.sanBong.getGia();
+    }
+    public long tongLuot() {
+        long diffInMillies = Math.abs(this.ngayKetThuc.getTime() - this.ngayBatDau.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return diff;
     }
 
 }

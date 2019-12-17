@@ -5,35 +5,35 @@
  */
 package view;
 
-import controller.DanhSachDatSanDAO;
-import controller.NhapThoiGianDAO;
+import controller.ThongKeDatSanDAO;
+import controller.ThongKeKhungGioDAO;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import model.DanhSachDatSan;
+import model.PhieuDatSan;
 
 /**
  *
  * @author Anh Le
  */
-public class DanhSachDatSanFRM extends javax.swing.JFrame {
+public class ChiTietDanhSachDatSanFRM extends javax.swing.JFrame {
 
     static String khungGio;
     static String BD;
     static String KT;
 
     /**
-     * Creates new form DanhSachDatSan
+     * Creates new form PhieuDatSan
      */
-    public DanhSachDatSanFRM(String khungGio, String ngayBD, String ngayKT) {
+    public ChiTietDanhSachDatSanFRM(String khungGio, String ngayBD, String ngayKT) {
         initComponents();
         khungGio = khungGio;
         BD = ngayBD;
         KT = ngayKT;
         String[] gio = khungGio.split("-");
-        DanhSachDatSanDAO dsds = new DanhSachDatSanDAO();
+        ThongKeDatSanDAO dsds = new ThongKeDatSanDAO();
         int idkhungGio = dsds.seachKhungGio(gio[0], gio[1]);
-        ArrayList<DanhSachDatSan> danhSachDatSan = new ArrayList<>();
+        ArrayList<PhieuDatSan> danhSachDatSan = new ArrayList<>();
 
         danhSachDatSan = dsds.getDanhSach(idkhungGio, BD, KT);
 
@@ -49,7 +49,7 @@ public class DanhSachDatSanFRM extends javax.swing.JFrame {
                 danhSachDatSan.get(i).getNgayKetThuc(),
                 danhSachDatSan.get(i).getKhungGio().getGioBatDau() + "-" + danhSachDatSan.get(i).getKhungGio().getGioKetThuc(),
                 danhSachDatSan.get(i).getSanBong().getGia(),
-                danhSachDatSan.get(i).getTongTien()
+                danhSachDatSan.get(i).tongTien(),
             });
         }
 
@@ -123,7 +123,7 @@ public class DanhSachDatSanFRM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        NhapThoiGianDAO ntgController = new NhapThoiGianDAO();
+        ThongKeKhungGioDAO ntgController = new ThongKeKhungGioDAO();
         KhungGioThueNhieuFRM kgtn = new KhungGioThueNhieuFRM(ntgController.nhapKhungGio(BD, KT), BD, KT);
         kgtn.setVisible(true);
         this.setVisible(false);
@@ -146,20 +146,21 @@ public class DanhSachDatSanFRM extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DanhSachDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PhieuDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DanhSachDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PhieuDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DanhSachDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PhieuDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DanhSachDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PhieuDatSan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DanhSachDatSanFRM(khungGio, BD, KT).setVisible(true);
+                new ChiTietDanhSachDatSanFRM(khungGio, BD, KT).setVisible(true);
             }
         });
     }

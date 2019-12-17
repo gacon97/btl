@@ -111,7 +111,6 @@ public class LoginFRM extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         TaiKhoan tk = new TaiKhoan(username.getText(), password.getText());
         LoginController lc = new LoginController();
-        System.out.println("ád" + password.getText());
         if (username.getText().isEmpty() || password.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Bạn chưa nhập tài khoản hoặc mật khẩu!");
         } else {

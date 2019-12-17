@@ -9,16 +9,13 @@ package model;
  *
  * @author Anh Le
  */
-public class KhachHang extends Nguoi{
-    public String cmt;
+public class Nguoi {
+    public String ten;
+    public String soDT;
+    public String email;
 
-    public KhachHang(String scmt, String ten) {
-        super(ten);
-        this.cmt = scmt;
-    }
-
-    public String getCmt() {
-        return cmt;
+    public Nguoi(String ten) {
+        this.ten = ten;
     }
 
     public String getTen() {
@@ -31,10 +28,6 @@ public class KhachHang extends Nguoi{
 
     public String getEmail() {
         return email;
-    }
-
-    public void setCmt(String cmt) {
-        this.cmt = cmt;
     }
 
     public void setTen(String ten) {

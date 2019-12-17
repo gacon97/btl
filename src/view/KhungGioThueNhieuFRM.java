@@ -114,7 +114,7 @@ public class KhungGioThueNhieuFRM extends javax.swing.JFrame {
         TableModel model = tblKhungGio.getModel();
         String gio = model.getValueAt(index, 1).toString();
         System.out.println(BD + " "+KT);
-        DanhSachDatSanFRM ds = new DanhSachDatSanFRM(gio, BD, KT);
+        ChiTietDanhSachDatSanFRM ds = new ChiTietDanhSachDatSanFRM(gio, BD, KT);
         ds.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_tblKhungGioMouseClicked

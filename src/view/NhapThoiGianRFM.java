@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.NhapThoiGianDAO;
+import controller.ThongKeKhungGioDAO;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -115,17 +115,20 @@ public class NhapThoiGianRFM extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        if (ngayBD.getDate().compareTo(ngayKT.getDate()) > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Bạn vùa nhập ngày bắt đầu lớn hơn ngày kết thúc!");
 
+        }
         if (ngayBD.getDate() == null) {
             JOptionPane.showMessageDialog(rootPane, "Bạn chưa nhập ngày bắt đầu!");
-        }
-        if (ngayKT.getDate() == null) {
+
+        } else if (ngayKT.getDate() == null) {
             JOptionPane.showMessageDialog(rootPane, "Bạn chưa nhập ngày Kết thúc!");
         }
-        if(ngayBD.getDate() != null && ngayKT.getDate() != null) {
+        if (ngayBD.getDate() != null && ngayKT.getDate() != null) {
             String BD = df.format(ngayBD.getDate());
             String KT = df.format(ngayKT.getDate());
-            NhapThoiGianDAO ntgController = new NhapThoiGianDAO();
+            ThongKeKhungGioDAO ntgController = new ThongKeKhungGioDAO();
             KhungGioThueNhieuFRM kgtn = new KhungGioThueNhieuFRM(ntgController.nhapKhungGio(BD, KT), BD, KT);
             kgtn.setVisible(true);
             this.setVisible(false);
