@@ -30,6 +30,7 @@ public class ThongKeKhungGioDAO {
                         "where tblPhieuDatSan.NgayBatDau >= '" + NgayBatDau + "' and tblPhieuDatSan.NgayKetThuc <= '" + NgayKetThuc + "' \n" +
                         "GROUP BY tblPhieuDatSan.KhungGio_ID ORDER BY tong_luot desc,tong_tien desc;";
         Statement stmt;
+        System.out.println(query);
         try {
             stmt = DAO.getInstance().con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
