@@ -133,7 +133,7 @@ public class NhapThoiGianRFM extends javax.swing.JFrame {
             String BD = df.format(ngayBD.getDate());
             String KT = df.format(ngayKT.getDate());
             ThongKeKhungGioDAO ntgController = new ThongKeKhungGioDAO();
-            KhungGioThueNhieuFRM kgtn = new KhungGioThueNhieuFRM(ntgController.nhapKhungGio(BD, KT), BD, KT);
+            KhungGioThueNhieuFRM kgtn = new KhungGioThueNhieuFRM(ntgController.getDanhSach(BD, KT), BD, KT);
             kgtn.setVisible(true);
             this.setVisible(false);
         }

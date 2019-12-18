@@ -124,7 +124,7 @@ public class ChiTietDanhSachDatSanFRM extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         ThongKeKhungGioDAO ntgController = new ThongKeKhungGioDAO();
-        KhungGioThueNhieuFRM kgtn = new KhungGioThueNhieuFRM(ntgController.nhapKhungGio(BD, KT), BD, KT);
+        KhungGioThueNhieuFRM kgtn = new KhungGioThueNhieuFRM(ntgController.getDanhSach(BD, KT), BD, KT);
         kgtn.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
