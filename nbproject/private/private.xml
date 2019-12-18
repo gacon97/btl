@@ -3,23 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/TaiKhoan.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/controller/ThongKeKhungGioDAO.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/controller/DAO.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/Nguoi.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/controller/LoginController.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/PhieuDatSan.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/quanlysanbong/QuanLySanBong.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/view/NhapThoiGianRFM.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/view/ChiTietDanhSachDatSanFRM.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/KhachHang.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/KhungGio.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/controller/ThongKeDatSanDAO.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/SanBong.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/view/KhungGioThueNhieuFRM.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/model/ThongKeKhungGio.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/view/LoginFRM.java</file>
-            <file>file:/C:/Users/Anh%20Le/Documents/NetBeansProjects/QuanLySanBong/src/view/QuanLyHomeFrm.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/KhungGioThueNhieuFRM.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/NhapThoiGianRFM.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/controller/DAO.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/QuanLyHomeFrm.java</file>
         </group>
     </open-files>
 </project-private>

@@ -20,7 +20,7 @@ import model.ThongKeKhungGio;
  */
 public class ThongKeKhungGioDAO {
 
-    public ArrayList<ThongKeKhungGio> nhapKhungGio(String NgayBatDau, String NgayKetThuc) {
+    public ArrayList<ThongKeKhungGio> getDanhSach(String NgayBatDau, String NgayKetThuc) {
         ArrayList<ThongKeKhungGio> tkKhungGio = new ArrayList<>();
         String query = "SELECT tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc,COUNT(tblPhieuDatSan.id) AS tong_luot, "
                         + "SUM(tblPhieuDatSan.TongTien) AS tong_tien from tblPhieuDatSan \n" +
