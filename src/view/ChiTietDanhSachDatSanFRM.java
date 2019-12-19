@@ -10,6 +10,7 @@ import controller.ThongKeKhungGioDAO;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import model.HoaDon;
 import model.PhieuDatSan;
 
 /**
@@ -33,7 +34,7 @@ public class ChiTietDanhSachDatSanFRM extends javax.swing.JFrame {
         String[] gio = khungGio.split("-");
         ThongKeDatSanDAO dsds = new ThongKeDatSanDAO();
         int idkhungGio = dsds.seachKhungGio(gio[0], gio[1]);
-        ArrayList<PhieuDatSan> danhSachDatSan = new ArrayList<>();
+        ArrayList<HoaDon> danhSachDatSan = new ArrayList<>();
 
         danhSachDatSan = dsds.getDanhSach(idkhungGio, BD, KT);
 
@@ -42,14 +43,14 @@ public class ChiTietDanhSachDatSanFRM extends javax.swing.JFrame {
         tblDanhSach.getTableHeader().setFont(font); // Bold header font
         for (int i = 0; i < danhSachDatSan.size(); i++) {
             model.addRow(new Object[]{
-                danhSachDatSan.get(i).getId(),
-                danhSachDatSan.get(i).getKhachHang().getTen(),
-                danhSachDatSan.get(i).getSanBong().getTen(),
-                danhSachDatSan.get(i).getNgayBatDau(),
-                danhSachDatSan.get(i).getNgayKetThuc(),
-                danhSachDatSan.get(i).getKhungGio().getGioBatDau() + "-" + danhSachDatSan.get(i).getKhungGio().getGioKetThuc(),
-                danhSachDatSan.get(i).getSanBong().getGia(),
-                danhSachDatSan.get(i).tongTien(),
+                danhSachDatSan.get(i).getPhieuDatSan().getId(),
+                danhSachDatSan.get(i).getPhieuDatSan().getKhachHang().getTen(),
+                danhSachDatSan.get(i).getPhieuDatSan().getSanBong().getTen(),
+                danhSachDatSan.get(i).getPhieuDatSan().getNgayBatDau(),
+                danhSachDatSan.get(i).getPhieuDatSan().getNgayKetThuc(),
+                danhSachDatSan.get(i).getPhieuDatSan().getKhungGio().getGioBatDau() + "-" + danhSachDatSan.get(i).getPhieuDatSan().getKhungGio().getGioKetThuc(),
+                danhSachDatSan.get(i).getPhieuDatSan().getSanBong().getGia(),
+                danhSachDatSan.get(i).getTienThanhToan(),
             });
         }
 

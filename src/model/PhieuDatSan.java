@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +19,7 @@ public class PhieuDatSan {
     public KhungGio khungGio;
     public KhachHang khachHang;
     public SanBong sanBong;
+    public ArrayList<PhieuCheckout> PhieuCheckout;
     public Date ngayBatDau;
     public Date ngayKetThuc;
     public int tongTien;
@@ -29,6 +31,10 @@ public class PhieuDatSan {
         this.sanBong = sanBong;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
+    }
+
+    public void setPhieuCheckout(ArrayList<PhieuCheckout> PhieuCheckout) {
+        this.PhieuCheckout = PhieuCheckout;
     }
 
     public int getTongTien() {

@@ -5,9 +5,12 @@
         <group>
             <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/KhungGioThueNhieuFRM.java</file>
             <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/NhapThoiGianRFM.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/controller/ThongKeDatSanDAO.java</file>
             <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/controller/DAO.java</file>
             <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/ChiTietDanhSachDatSanFRM.java</file>
             <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/view/QuanLyHomeFrm.java</file>
+            <file>file:/C:/Users/ngona/OneDrive/Documents/NetBeansProjects/btl/src/controller/ThongKeKhungGioDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -23,10 +23,9 @@ public class ThongKeKhungGioDAO {
     public ArrayList<ThongKeKhungGio> getDanhSach(String NgayBatDau, String NgayKetThuc) {
         ArrayList<ThongKeKhungGio> tkKhungGio = new ArrayList<>();
         String query = "SELECT tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc,COUNT(tblPhieuDatSan.id) AS tong_luot, "
-                        + "SUM(tblPhieuDatSan.TongTien) AS tong_tien from tblPhieuDatSan \n" +
+                        + "SUM(tblHoaDon.TongTien) AS tong_tien from tblPhieuDatSan \n" +
                         "INNER JOIN tblKhungGio ON tblPhieuDatSan.KhungGio_ID = tblKhungGio.id \n" +
                         "INNER JOIN tblHoaDon ON tblHoaDon.PhieuDatSan_ID = tblPhieuDatSan.id\n" +
-                        "INNER JOIN tblPhieuCheckout ON tblPhieuDatSan.id = tblPhieuCheckout.PhieuDatSan_ID "+
                         "where tblPhieuDatSan.NgayBatDau >= '" + NgayBatDau + "' and tblPhieuDatSan.NgayKetThuc <= '" + NgayKetThuc + "' \n" +
                         "GROUP BY tblPhieuDatSan.KhungGio_ID ORDER BY tong_luot desc,tong_tien desc;";
         Statement stmt;
