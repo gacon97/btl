@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +15,7 @@ import java.sql.Time;
 public class ThongKeKhungGio extends KhungGio{
     int tong_luot;
     int tong_tien;
+    ArrayList<HoaDon> dsHoaDon;
 
     public ThongKeKhungGio(Time gioBatDau, Time gioKetThuc) {
         super(gioBatDau, gioKetThuc);

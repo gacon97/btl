@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.HoaDon;
 import model.PhieuDatSan;
 import model.KhachHang;
 import model.KhungGio;
@@ -38,17 +39,16 @@ public class ThongKeDatSanDAO {
         }
         return id;
     }
-    public ArrayList<PhieuDatSan> getDanhSach(int idKhungGio, String ngayBD, String ngayKT) {
-        ArrayList<PhieuDatSan> dsDatSan = new ArrayList<>();
-        String query = "SELECT tblPhieuDatSan.*, tblKhachHang.SoCMT,tblNguoi.HoTen, tblSanBong.Ten, tblSanBong.GiaTien,tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc "
+    public ArrayList<HoaDon> getDanhSach(int idKhungGio, String ngayBD, String ngayKT) {
+        ArrayList<HoaDon> dsDatSan = new ArrayList<>();
+        String query = "SELECT tblPhieuDatSan.*, tblKhachHang.SoCMT,tblNguoi.HoTen, tblSanBong.Ten, "
+                + "tblSanBong.GiaTien,tblKhungGio.GioBatDau, tblKhungGio.GioKetThuc , tblHoaDon.TongTien as tong_tien "
                 + "from tblPhieuDatSan INNER JOIN tblKhungGio ON tblPhieuDatSan.KhungGio_ID = tblKhungGio.id "
                 + "INNER JOIN tblKhachHang ON tblPhieuDatSan.KhachHang_ID = tblKhachHang.id "
                 + "INNER JOIN tblNguoi ON tblNguoi.id = tblKhachHang.Nguoi_ID "
                 + "INNER JOIN tblSanBong on tblSanBong.id = tblPhieuDatSan.SanBong_ID "
                 + "INNER JOIN tblHoaDon ON tblHoaDon.PhieuDatSan_ID = tblPhieuDatSan.id "
-                + "INNER JOIN tblPhieuCheckout ON tblPhieuDatSan.id = tblPhieuCheckout.PhieuDatSan_ID "
                 + "where tblPhieuDatSan.NgayBatDau >= '" + ngayBD + "' and tblPhieuDatSan.NgayKetThuc <= '" + ngayKT + "' AND tblKhungGio.id = " + idKhungGio + "";
-        System.out.println(query);
         Statement stmt;
         try {
             stmt = DAO.getInstance().con.createStatement();
@@ -58,8 +58,9 @@ public class ThongKeDatSanDAO {
                 SanBong sanBong = new SanBong(rs.getString("Ten"), rs.getInt("GiaTien"));
                 KhachHang khachHang = new KhachHang(rs.getString("SoCMT"), rs.getString("HoTen"));
                 KhungGio khungGio = new KhungGio(rs.getTime("GioBatDau"), rs.getTime("GioKetThuc"));
-                PhieuDatSan danhSachDatSan = new PhieuDatSan(rs.getInt("id"), khungGio, khachHang, sanBong, rs.getDate("NgayBatDau"), rs.getDate("NgayKetThuc"));
-                dsDatSan.add(danhSachDatSan);
+                PhieuDatSan phieuDatSan = new PhieuDatSan(rs.getInt("id"), khungGio, khachHang, sanBong, rs.getDate("NgayBatDau"), rs.getDate("NgayKetThuc"));
+                HoaDon hoaDon = new HoaDon(phieuDatSan, rs.getInt("tong_tien"));
+                dsDatSan.add(hoaDon);
             }
         } catch (SQLException ex) {
             Logger.getLogger(query).log(Level.SEVERE, null, ex);

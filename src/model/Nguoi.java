@@ -14,6 +14,13 @@ public class Nguoi {
     public String soDT;
     public String email;
 
+    public Nguoi(String ten, String soDT, String email) {
+        this.ten = ten;
+        this.soDT = soDT;
+        this.email = email;
+    }
+
+    
     public Nguoi(String ten) {
         this.ten = ten;
     }

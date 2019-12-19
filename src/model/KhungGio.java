@@ -20,6 +20,10 @@ public class KhungGio {
         this.gioKetThuc = gioKetThuc;
     }
 
+    KhungGio() {
+        
+    }
+
     public Time getGioBatDau() {
         return gioBatDau;
     }
