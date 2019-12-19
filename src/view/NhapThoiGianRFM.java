@@ -124,12 +124,10 @@ public class NhapThoiGianRFM extends javax.swing.JFrame {
         }
         else if(ngayBD.getDate().compareTo(ngayKT.getDate()) > 0)
         {
-                        JOptionPane.showMessageDialog(rootPane, "Bạn vùa nhập ngày bắt đầu lớn hơn ngày kết thúc!");
+            JOptionPane.showMessageDialog(rootPane, "Bạn vùa nhập ngày bắt đầu lớn hơn ngày kết thúc!");
 
         }
         if (ngayBD.getDate() != null && ngayKT.getDate() != null && ngayBD.getDate().compareTo(ngayKT.getDate()) < 0) {
-                    System.out.println("ok");
-
             String BD = df.format(ngayBD.getDate());
             String KT = df.format(ngayKT.getDate());
             ThongKeKhungGioDAO ntgController = new ThongKeKhungGioDAO();
